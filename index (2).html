@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Día de la Madre, Mariana</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 50%, #ffafbd 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Corazones flotantes */
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            animation: float 6s infinite ease-in-out;
+            opacity: 0;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .card-container {
+            perspective: 1000px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .card {
+            width: 500px;
+            height: 650px;
+            background: linear-gradient(145deg, #fff0f8, #ffe4f2);
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(255, 105, 180, 0.3);
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: pulse 3s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, 
+                transparent, 
+                rgba(255, 182, 193, 0.1), 
+                transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+        }
+
+        .flower-decoration {
+            position: absolute;
+            font-size: 60px;
+            animation: rotate 10s infinite linear;
+        }
+
+        .flower-top-left {
+            top: 20px;
+            left: 20px;
+        }
+
+        .flower-top-right {
+            top: 20px;
+            right: 20px;
+            animation-delay: 2s;
+        }
+
+        .flower-bottom-left {
+            bottom: 20px;
+            left: 20px;
+            animation-delay: 4s;
+        }
+
+        .flower-bottom-right {
+            bottom: 20px;
+            right: 20px;
+            animation-delay: 6s;
+        }
+
+        @keyframes rotate {
+            0%, 100% {
+                transform: rotate(0deg) scale(1);
+            }
+            50% {
+                transform: rotate(180deg) scale(1.2);
+            }
+        }
+
+        h1 {
+            color: #ff6b9d;
+            font-size: 48px;
+            margin: 60px 0 20px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.3);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .name {
+            color: #c44569;
+            font-size: 56px;
+            font-weight: bold;
+            margin: 20px 0;
+            position: relative;
+            z-index: 1;
+            text-shadow: 3px 3px 6px rgba(196, 69, 105, 0.3);
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 3px 3px 6px rgba(196, 69, 105, 0.3),
+                            0 0 10px rgba(255, 105, 180, 0.5);
+            }
+            to {
+                text-shadow: 3px 3px 6px rgba(196, 69, 105, 0.3),
+                            0 0 20px rgba(255, 105, 180, 0.8);
+            }
+        }
+
+        .message {
+            color: #8e44ad;
+            font-size: 24px;
+            line-height: 1.8;
+            margin: 30px 0;
+            position: relative;
+            z-index: 1;
+            font-style: italic;
+        }
+
+        .heart-big {
+            font-size: 80px;
+            margin: 20px 0;
+            position: relative;
+            z-index: 1;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            10% {
+                transform: scale(1.1);
+            }
+            20% {
+                transform: scale(1);
+            }
+            30% {
+                transform: scale(1.1);
+            }
+            40% {
+                transform: scale(1);
+            }
+        }
+
+        .subtitle {
+            color: #e056fd;
+            font-size: 20px;
+            position: relative;
+            z-index: 1;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        /* Efectos de partículas */
+        .sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: radial-gradient(circle, #fff, transparent);
+            border-radius: 50%;
+            animation: sparkle 2s infinite;
+            opacity: 0;
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <div class="card">
+            <div class="flower-decoration flower-top-left">🌸</div>
+            <div class="flower-decoration flower-top-right">🌺</div>
+            <div class="flower-decoration flower-bottom-left">🌼</div>
+            <div class="flower-decoration flower-bottom-right">🌷</div>
+            
+            <h1>¡Feliz Día de la Madre!</h1>
+            
+            <div class="name">Mariana</div>
+            
+            <div class="heart-big">💖</div>
+            
+            <div class="message">
+                "Eres la luz que ilumina cada día,<br>
+                el amor que nunca se agota,<br>
+                y la fuerza que nos inspira."
+            </div>
+            
+            <div class="subtitle">
+                ¡Te amamos con todo el corazón! ✨
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Crear corazones flotantes
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = ['💕', '💗', '💝', '💖', '💓'][Math.floor(Math.random() * 5)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 8000);
+        }
+
+        // Crear corazones continuamente
+        setInterval(createHeart, 800);
+
+        // Crear efecto de brillos
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            sparkle.style.animationDelay = Math.random() * 2 + 's';
+            document.querySelector('.card').appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 2000);
+        }
+
+        // Crear brillos continuamente
+        setInterval(createSparkle, 300);
+
+        // Crear corazones iniciales
+        for(let i = 0; i < 5; i++) {
+            setTimeout(createHeart, i * 500);
+        }
+    </script>
+</body>
+</html>
